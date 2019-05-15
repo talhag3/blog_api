@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function getPosts(Request $request ){
         //Get Posts
-        $posts = Post::latest()->get();
+        $posts = Post::orderBy('updated_at','DESC')->get();
         return [
             'status'=>200,
             'msg'=>"Posts ",
@@ -17,16 +17,22 @@ class PostController extends Controller
         ];
     }
 
-    public function getPost(Request $request){
-
+    public function getPost(Request $request,Post $post){
+        return [
+            'status'=>200,
+            'msg'=>"Post",
+            'result'=>$post
+        ];
     }
 
-    public function updatePost(Request $request , Post $id){
+    public function updatePost(Request $request , Post $post){
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
         ]);
-        $post->update($request->only(['title', 'body']));
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
         return [
             'status'=>200,
             'msg'=>"Post Updated ",

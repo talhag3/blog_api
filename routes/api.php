@@ -25,6 +25,7 @@ Route::middleware(['authenticated'])->group(function () {
 
     //Blog Post Routes 
     Route::get('/posts','PostController@getPosts');
+    Route::get('/posts/{post}','PostController@getPost');
     Route::post('/posts/create','PostController@createPost');
     Route::post('/posts/edit/{post}', 'PostController@updatePost');
 });
