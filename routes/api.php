@@ -28,6 +28,7 @@ Route::middleware(['authenticated'])->group(function () {
     Route::get('/posts/{post}','PostController@getPost');
     Route::post('/posts/create','PostController@createPost');
     Route::post('/posts/edit/{post}', 'PostController@updatePost');
+    Route::get('/posts/delete/{post}','PostController@deletePost');
 });
 
 Route::post('/register','ApiController@register');

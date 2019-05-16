@@ -60,7 +60,14 @@ class PostController extends Controller
         ];
     }
 
-    public function deletePost(Request $request){
+    public function deletePost(Request $request,Post $post){
 
+        $post->delete();
+        //User::destroy([1, 2, 3]);
+        return [
+            'status'=>200,
+            'msg'=>"Post Deleted ",
+            'result'=>true
+        ];
     }
 }
