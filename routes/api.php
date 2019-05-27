@@ -26,9 +26,15 @@ Route::middleware(['authenticated'])->group(function () {
     //Blog Post Routes 
     Route::get('/posts','PostController@getPosts');
     Route::get('/posts/{post}','PostController@getPost');
+    Route::get('/post/{id}','PostController@getPost2');
     Route::post('/posts/create','PostController@createPost');
     Route::post('/posts/edit/{post}', 'PostController@updatePost');
     Route::get('/posts/delete/{post}','PostController@deletePost');
+
+    //Blog Post Like
+    Route::post('/post_like/{post}', 'PostController@LikePost');
+    Route::post('/post_unlike/{post}', 'PostController@unLikePost');
+    Route::get('/post_like/{post}', 'PostController@postLikes');
 });
 
 Route::post('/register','ApiController@register');
