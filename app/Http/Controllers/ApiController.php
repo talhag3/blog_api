@@ -68,6 +68,7 @@ class ApiController extends Controller
             return [
                 'msg'=>"Successfully Login",
                 'status'=>200,
+                'user_id'=>$user->id,
                 'api_token'=>$user->api_token
             ];
         }

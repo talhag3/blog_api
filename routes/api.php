@@ -35,6 +35,16 @@ Route::middleware(['authenticated'])->group(function () {
     Route::post('/post_like/{post}', 'PostController@LikePost');
     Route::post('/post_unlike/{post}', 'PostController@unLikePost');
     Route::get('/post_like/{post}', 'PostController@postLikes');
+
+
+    //Chat Controller 
+    Route::post('/create-thread', 'ChatController@createThread');
+    Route::get('/threads','ChatController@getThreads');
+    Route::get('/thread/{thread}','ChatController@getThread');
+    Route::get('/thread-messages','ChatController@getMessages');
+
+    Route::post('/send-message','ChatController@saveMessage');
+
 });
 
 Route::post('/register','ApiController@register');
